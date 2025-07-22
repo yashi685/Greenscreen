@@ -1,46 +1,77 @@
-FFmpeg README
-=============
+🟢 Green Screen Remover (Image/Video) using OpenCV + FFmpeg
+This project removes green screen backgrounds from videos or images, and replaces them with a custom background using OpenCV.
+For videos, the original audio is retained using FFmpeg.
 
-FFmpeg is a collection of libraries and tools to process multimedia content
-such as audio, video, subtitles and related metadata.
+🎥 Features
+✅ Replace green screen in videos
 
-## Libraries
+✅ Replace green screen in images
 
-* `libavcodec` provides implementation of a wider range of codecs.
-* `libavformat` implements streaming protocols, container formats and basic I/O access.
-* `libavutil` includes hashers, decompressors and miscellaneous utility functions.
-* `libavfilter` provides means to alter decoded audio and video through a directed graph of connected filters.
-* `libavdevice` provides an abstraction to access capture and playback devices.
-* `libswresample` implements audio mixing and resampling routines.
-* `libswscale` implements color conversion and scaling routines.
+✅ Automatically resizes background to match subject
 
-## Tools
+✅ Keeps original audio in videos using FFmpeg
 
-* [ffmpeg](https://ffmpeg.org/ffmpeg.html) is a command line toolbox to
-  manipulate, convert and stream multimedia content.
-* [ffplay](https://ffmpeg.org/ffplay.html) is a minimalistic multimedia player.
-* [ffprobe](https://ffmpeg.org/ffprobe.html) is a simple analysis tool to inspect
-  multimedia content.
-* Additional small tools such as `aviocat`, `ismindex` and `qt-faststart`.
+✅ Easy command-line interface (CLI)
 
-## Documentation
+📁 Project Structure
 
-The offline documentation is available in the **doc/** directory.
+green-screen-remover/
+├── ffmpeg-7.1.1/              # FFmpeg folder (required for audio in video)
+├── script.py                  # Main Python script
+├── README.md                  # Project documentation
+💻 Requirements
+Python 3.x
 
-The online documentation is available in the main [website](https://ffmpeg.org)
-and in the [wiki](https://trac.ffmpeg.org).
+OpenCV (cv2)
 
-### Examples
+NumPy
 
-Coding examples are available in the **doc/examples** directory.
+FFmpeg (downloaded and referenced in code)
 
-## License
+📦 Installation
+Install dependencies
 
-FFmpeg codebase is mainly LGPL-licensed with optional components licensed under
-GPL. Please refer to the LICENSE file for detailed information.
+pip install opencv-python numpy
+Download FFmpeg
 
-## Contributing
+Download FFmpeg
 
-Patches should be submitted to the ffmpeg-devel mailing list using
-`git format-patch` or `git send-email`. Github pull requests should be
-avoided because they are not part of our review process and will be ignored.
+Extract it and update the ffmpeg_path in the script:
+
+
+ffmpeg_path = r"C:\Users\YourName\Path\To\ffmpeg\bin\ffmpeg.exe"
+▶️ How to Use
+✅ 1. Run the script
+
+python script.py
+🟢 2. Choose mode:
+
+
+1. Replace green screen in video
+2. Replace green screen in image
+💡 3. Provide file paths (examples):
+Video with green screen:
+
+
+C:/Users/yashi/Downloads/greenscreen_video.mp4
+Background image:
+
+C:/Users/yashi/Pictures/beach.jpg
+📂 Output
+For videos:
+
+temp_output.mp4 – video with background replaced, no audio
+
+final_output_with_audio.mp4 – final output with original audio
+
+For images:
+
+output_image.jpg – image with background replaced
+
+🛠️ Customization
+🎯 Adjust green range if needed:
+
+
+lower_green = np.array([35, 40, 40])
+upper_green = np.array([85, 255, 255])
+🧠 Use your own ffmpeg_path if not in project folder
